@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import numpy as np
 import cv2
-from image_process import canny
 from datetime import datetime
 import os
 import string
@@ -38,7 +37,7 @@ def upload():
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
         img = cv2.imdecode(img_array, 1)
 
-        
+
 
         # 保存
         #dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
@@ -56,14 +55,13 @@ def upload():
 
 
 
-@app.route('/ans', methods=['POST'])  
-def post():  
+@app.route('/ans', methods=['POST'])
+def post():
     return render_template('index.html')
 
-    
-    
+
+
 if __name__ == '__main__':
     app.debug = True
     #app.run(host='0.0.0.0', port=8888)
     app.run(host="localhost", port=8000)
- 
