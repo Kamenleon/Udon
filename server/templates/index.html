@@ -1,16 +1,25 @@
-{% extends "layout.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ja">
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" accept="image/png, image/jpeg">
-  <button type="submit">submit</button>
-</form>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <title>俳優類似度診断</title>
+</head>
 
-{% if images %}
-    <div>
-      {{path}}
-      {{out}}
-    </div>
-{% endif %}
+<body>
+  <div class="contents">
+    <main>
+      <p style="text-align-last: center;">俳優類似度診断</p>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/png, image/jpeg">
+        <button type="submit">submit</button>
+      </form>
+    </main>
+    <aside>
+      <p>他の診断で遊んでみる</p>
+    </aside>
+  </div>
+</body>
 
-{% endblock %}
+</html>
