@@ -56,4 +56,4 @@ if __name__ == '__main__':
     app.debug = True
     #app.run(host='0.0.0.0', port=8888)
     #port = int(os.getenv("PORT"))
-    app.run('https://sudn.herokuapp.com')
+    app.run(debug=False)
