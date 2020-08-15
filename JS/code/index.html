@@ -9,13 +9,88 @@
 
 <body>
   <div class="contents">
-  <main>
-    <h1>俳優類似度診断</h1>
-  </main>
-  <aside>
-    <p>他の診断で遊んでみる</p>
-  </aside>
+    <main>
+      <h1>俳優類似度診断</h1>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="upfile" id="upfile" accept="image/*" capture="camera">
+        <button type="submit" id="submitBtn">送信する</button>
+      </form>
+    </main>
+    <aside>
+      <p>他の診断で遊んでみる</p>
+    </aside>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script>
+    //エンコード
+    $('#upfile').change(function () {
+      if (this.files.length > 0) {
+        // 選択されたファイル情報を取得
+        var file = this.files[0];
+
+        // readerのresultプロパティに、データURLとしてエンコードされたファイルデータを格納
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function () {
+          $('#thumbnail').attr('src', reader.result);
+          console.log(reader.result);
+
+          //ajaxで送信
+          $.ajax({
+            url: '/api',
+            method: 'post',
+            dataType: 'json',
+            // dataに FormDataを指定
+            //data: data,
+            // Ajaxがdataを整形しない指定
+            processData: false,
+            // contentTypeもfalseに指定
+            contentType: false
+          }).done(function (res) {
+            // 送信せいこう！
+            console.log('SUCCESS', res);
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            // しっぱい！
+            console.log('ERROR', jqXHR, textStatus, errorThrown);
+          });
+        }
+      }
+    });
+
+    /*
+    //ajaxで送信
+    $(function () {
+        $('#submitBtn').on('click', function (evt) {
+          var form = $('#myForm').get()[0];
+
+          // FormData オブジェクトを作成
+          var formData = new FormData(form);
+
+          // Ajaxで送信
+          $.ajax({
+            url: '/api',
+            method: 'post',
+            dataType: 'json',
+            // dataに FormDataを指定
+            data: formData,
+            // Ajaxがdataを整形しない指定
+            processData: false,
+            // contentTypeもfalseに指定
+            contentType: false
+          }).done(function (res) {
+            // 送信せいこう！
+            console.log('SUCCESS', res);
+          }).fail(function (jqXHR, textStatus, errorThrown) {
+            // しっぱい！
+            console.log('ERROR', jqXHR, textStatus, errorThrown);
+          });
+
+          return false;
+        });
+      });
+      */
+  </script>
 </body>
 
 </html>
