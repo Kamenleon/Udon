@@ -40,11 +40,13 @@ def upload():
 
         # 変換
         img = canny(img)
+        les="seiko"
 
         # 保存
         #dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
-        dt_now = datetime.now().strftime("test") + random_str(5)
-        save_path = os.path.join(SAVE_DIR, dt_now + ".png")
+        #dt_now = datetime.now().strftime(les)
+        dt_now = les
+        save_path = os.path.join(SAVE_DIR, dt_now)
         cv2.imwrite(save_path, img)
         print("save", save_path)
         print("ok---------------")
