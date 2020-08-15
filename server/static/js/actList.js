@@ -1,7 +1,11 @@
+function test(){
+  console.log("test");
+}
+
 window.onload = function getActData() {
   //ここで結果を受け取り、任意の変数に代入する
   var ans = document.getElementById("ansName").value;
-  $.getJSON("actData.json", function (data) {
+  $.getJSON("{{ url_for('templates',filename='actData.json') }}", function (data) {
     //↓actDataの配列内を検索
     for (var i = 0; i < Object.keys(data.actData).length; i++) {
       //↓結果と一致するnameの各データを取得し、画面に出力する
