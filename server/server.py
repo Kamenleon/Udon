@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, abort, make_response, current_app, jsonify
 import numpy as np
 import cv2
 from datetime import datetime
@@ -8,6 +8,8 @@ import random
 
 from predict import predict
 
+import sys
+import json
 
 out="UDN_Ver_1.0"
 SAVE_DIR = "./images"
