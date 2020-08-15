@@ -11,8 +11,9 @@
   <div class="contents">
     <main>
       <h1>俳優類似度診断</h1>
-      <p id="ansName" value="{{name}}">{{name}}</p>
-      {{p}}
+      <p id="ansName">あなたは「{{name}}」に{{p}}％似ています</p>
+      <div id="actImg">
+      </div>
       <div id="result">
       </div>
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
@@ -23,7 +24,7 @@
         <input type="submit" value="もう一度あそぶ">
       </form>
 
-      
+
     </main>
     <aside>
       <p>他の診断で遊んでみる</p>
@@ -32,28 +33,30 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>
 
-<script>
-   window.onload = function getActData() {
-  //ここで結果を受け取り、任意の変数に代入する
-  
-  var ans = '{{name}}';
-  
-  //$.getJSON('actData.json', function (data) {
-    $.getJSON("http://localhost:8000/js/actData.json", function (data) {
-    //↓actDataの配列内を検索
-    for (var i = 0; i < Object.keys(data.actData).length; i++) {
-      //↓結果と一致するnameの各データを取得し、画面に出力する
-      if (ans == data.actData[i].name) {
-        var parent = document.getElementById("result");
-        var p = document.createElement("p");
-        p.innerHTML = "生年月日：" + data.actData[i].birthday + "<br>血液型：" + data.actData[i].bloodType + "<br>代表作：" + data.actData[i].work + "<br>WikiPedia：" + data.actData[i].wiki;
-        parent.appendChild(p);
-      }
+  <script>
+    window.onload = function getActData() {
+      //ここで結果を受け取り、任意の変数に代入する
+
+      var ans = '{{name}}';
+
+      //$.getJSON('actData.json', function (data) {
+      $.getJSON("http://localhost:8000/js/actData.json", function (data) {
+        //↓actDataの配列内を検索
+        for (var i = 0; i < Object.keys(data.actData).length; i++) {
+          //↓結果と一致するnameの各データを取得し、画面に出力する
+          if (ans == data.actData[i].name) {
+            document.getElementById("actImg").innerHTML = "<img src =''>";
+
+            var parent = document.getElementById("result");
+            var p = document.createElement("p");
+            p.innerHTML = "生年月日：" + data.actData[i].birthday + "<br>血液型：" + data.actData[i].bloodType + "<br>代表作：" + data.actData[i].work + '<br>WikiPedia：<a href="' + data.actData[i].wiki + '">' + data.actData[i].wiki + "</a>";
+            parent.appendChild(p);
+          }
+        }
+      })
     }
-  })
-} 
- 
-</script>
+
+  </script>
 </body>
 
 </html>
