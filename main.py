@@ -55,5 +55,6 @@ def upload():
 if __name__ == '__main__':
     #app.debug = True
     #app.run(host='0.0.0.0', port=8888)
-    port = int(os.getenv("PORT"))
-    app.run(host="0.0.0.0", port=port)
+    #port = int(os.getenv("PORT"))
+    #app.run(host="0.0.0.0", port=port)
+    app.run(host='localhost', port=8888)
