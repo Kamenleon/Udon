@@ -8,7 +8,7 @@ import string
 import random
 
 from predict import predict
-#from io import BytesIO
+
 
 out="UDN_Ver_1.0"
 SAVE_DIR = "./images"
@@ -38,9 +38,7 @@ def upload():
         img_array = np.asarray(bytearray(stream.read()), dtype=np.uint8)
         img = cv2.imdecode(img_array, 1)
 
-        # 変換
-        #img = canny(img)
-        #out=predict(img)
+        
 
         # 保存
         #dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
@@ -50,13 +48,20 @@ def upload():
         print("save", save_path)
         print("ok---------------")
 
-        out=predict(save_path)
+        name,pasent=predict(save_path)
 
         #return redirect('/')
-        return render_template('ans.html',out=out)
+        return render_template('ans.html',name=name,p=pasent)
 
 
 
+
+@app.route('/ans', methods=['POST'])  
+def post():  
+    return render_template('index.html')
+
+    
+    
 if __name__ == '__main__':
     app.debug = True
     #app.run(host='0.0.0.0', port=8888)
