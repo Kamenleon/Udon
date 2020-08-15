@@ -13,18 +13,23 @@ if not os.path.isdir(SAVE_DIR):
 
 app = Flask(__name__, static_url_path="")
 
+
 def random_str(n):
     return ''.join([random.choice(string.ascii_letters + string.digits) for i in range(n)])
+
 
 @app.route('/')
 def index():
     return render_template('index.html', images=os.listdir(SAVE_DIR)[::-1])
+
 
 @app.route('/images/<path:path>')
 def send_js(path):
     return send_from_directory(SAVE_DIR, path)
 
 # 参考: https://qiita.com/yuuuu3/items/6e4206fdc8c83747544b
+
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if request.files['image']:
@@ -46,8 +51,8 @@ def upload():
 
         return redirect('/')
 
+
 if __name__ == '__main__':
     app.debug = True
     #app.run(host='0.0.0.0', port=8888)
-    app.run(host="localhost", port=8000)
- 
+    app.run(host='0.0.0.0', port=8000)
