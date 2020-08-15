@@ -33,7 +33,6 @@ hp1['epoch'] = 40 #エポック数
 
 
 #データセットのロード
-#X_train, X_test, y_train, y_test = np.load("/Users/ryunosuke/Desktop/python/original_aug/cat_aug.npy", allow_pickle=True)
 X_train, X_test, y_train, y_test = np.load("./udondataset2.npy", allow_pickle=True)
 
 
@@ -46,16 +45,14 @@ def CNN(input_shape):
  
         model.add(Conv2D(32, (3, 3), padding='same',input_shape=input_shape))
         model.add(Activation('relu'))
-        #model.add(Dropout(0.25))##################
         model.add(Conv2D(32, (3, 3)))
-        model.add(BatchNormalization())#######
+        model.add(BatchNormalization())
         model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.25))
 
         model.add(Conv2D(64, (3, 3), padding='same'))
         model.add(Activation('relu'))
-        #model.add(Dropout(0.25))#################
         model.add(Conv2D(64, (3, 3)))
         model.add(BatchNormalization())
         model.add(Activation('relu'))
@@ -64,17 +61,10 @@ def CNN(input_shape):
 
         model.add(Conv2D(128, (3, 3), padding='same'))
         model.add(Activation('relu'))
-        #model.add(Dropout(0.25))#################
         model.add(Conv2D(128, (3, 3)))
         model.add(BatchNormalization())
         model.add(Activation('relu'))
 
-        #model.add(Conv2D(128, (3, 3), padding='same'))
-        #model.add(Activation('relu'))
-        #model.add(Dropout(0.25))#################
-
-        #model.add(Conv2D(128, (3, 3)))
-        #model.add(Activation('relu'))
         model.add(MaxPooling2D(pool_size=(2, 2)))
         model.add(Dropout(0.25))
 
@@ -86,20 +76,19 @@ def CNN(input_shape):
         model.add(Dropout(0.5))
         model.add(Dense(hp1['class_num']))
         model.add(Activation('softmax'))
-        #model.add(Activation('sigmoid'))
+    
         return model
  
 
 #モデルを選択
 model=CNN(input_shape)
-#model=VGG_like(input_shape)
 
-#BinaryCrossEntropyでよくない？
+
+
 #コンパイル
-#model.compile(loss='binary_crossentropy',optimizer='SGD',metrics=['accuracy'])
+
 model.compile(loss='categorical_crossentropy',optimizer='SGD',metrics=['accuracy'])
 
-#model.compile(loss='categorical_crossentropy',optimizer='Adam',metrics=['accuracy'])
 
 #データの記録
 log_dir = os.path.join(os.path.dirname(__file__), "logdir")
@@ -117,7 +106,7 @@ history = model.fit(
         )
 
 #評価 & 評価結果出力
-#print(model.evaluate(X_test, y_test, batch_size=32))
+
 
 loss,accuracy = model.evaluate(X_test, y_test, batch_size=hp1['batch_size'])
 
