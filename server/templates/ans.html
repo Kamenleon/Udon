@@ -24,13 +24,17 @@
       <form action="/ans" method="post">
         <input type="submit" value="もう一度あそぶ" class="btns">
       </form>
-      <form action="/ans2" method="post">
-        <input type="submit" value="ほかの診断であそぶ" class="btns">
-      </form>
-            <form action="/re" method="post">
-              <input type="submit" value="ホームに戻る" class="btns">
-            </form>
+      
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>
+
+      <form action="/re" method="post">
+        <input type="submit" value="ホームに戻る" class="btns">
+      </form>
+
+    </main>
+    
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>
