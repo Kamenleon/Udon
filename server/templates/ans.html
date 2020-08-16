@@ -16,18 +16,17 @@
       </div>
       <div id="result">
       </div>
+      <div id="btn">
+        <div class="btns" id="twitter">
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
         data-text="診断してみました！" data-hashtags="サマーハッカソン" data-related="" data-show-count="false">Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+      </div>
       <form action="/ans" method="post">
-        <input type="submit" value="もう一度あそぶ">
+        <input type="submit" value="もう一度あそぶ" class="btns">
       </form>
-
-    </main>
-    <aside>
-      <p>他の診断で遊んでみる</p>
-    </aside>
+      <p class="btns">他の診断で遊んでみる</p>
+    </div>
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>

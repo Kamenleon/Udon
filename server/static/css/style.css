@@ -1,11 +1,40 @@
-main{
-  width: 80%;
+body{
+  width: 700px;
+  margin: 0px auto;
 }
 
-aside{
-  width: 20%;
+h1{
+  margin: 15px 0 0 0 ;
+  text-align: center;
 }
 
-.contents{
+#ansName{
+  text-align: center;
+}
+
+#actImg{
+  text-align: center;
+}
+
+#result{
+  display: inline-block;
+}
+
+#btn{
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btns{
+  margin: 0px 10px;
+  padding: 5px 12px;
+}
+
+#twitter{
+  margin: 8px 0 0 0;
+}
+
+.upload{
+  margin: 20px auto;
 }
