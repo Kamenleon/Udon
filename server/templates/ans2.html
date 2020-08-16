@@ -11,11 +11,12 @@
   <div class="contents">
     <main>
       <h1>これは何麺だ？？</h1>
-      <p id="ansName">これは{{p}}％の確率で「{{name}}」です。</p>
+      <p id="ansName">これは<span id="name">{{p}}％</span>の確率で「<span id="name">{{name}}</span>」です。</p>
       <div id="actImg">
       </div>
       <div id="result">
       </div>
+<<<<<<< HEAD
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
         data-text="診断してみました！" data-hashtags="サマーハッカソン" data-related="" data-show-count="false">Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -34,12 +35,33 @@
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>
+=======
+      <div id="btn">
+        <div class="btns" id="twitter">
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+            data-text="診断してみました！" data-hashtags="サマーハッカソン" data-related="" data-show-count="false">Tweet</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <form action="/ans2" method="post">
+          <input type="submit" value="もう一度あそぶ" class="btns">
+        </form>
+        <form action="/ans" method="post">
+          <input type="submit" value="ほかの診断で遊んで見る" class="btns">
+        </form>
 
-  <script>
-    window.onload = function getActData() {
-      //ここで結果を受け取り、任意の変数に代入する
+        <form action="/re" method="post">
+          <input type="submit" value="ホームに戻る" class="btns">
+        </form>
+      </div>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/actList.js') }}"></script>
+>>>>>>> 24a1b690bf4776d188339e6052ad29546cc1ffb3
 
-      var ans = '{{name}}';
+      <script>
+        window.onload = function getActData() {
+          //ここで結果を受け取り、任意の変数に代入する
+
+          var ans = '{{name}}';
 
       //$.getJSON('actData.json', function (data) {
       $.getJSON("http://localhost:8000/js/mendata.json", function (data) {
@@ -54,7 +76,6 @@
       })
     }
 
-  </script>
+      </script>
 </body>
-
 </html>
