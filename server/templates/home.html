@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <title>がぞうであそぼ！</title>
-  </head>
-  <body>
-   <h1>がぞうであそぼ！</h1>
-   <p></p>
-  <form action="/ans" method="post">
-    <input type="submit" value="類似度診断であそぶ">
-  </form>
-  
-  <form action="/ans2" method="post">
-    <input type="submit" value="この麺のどの麺であそぶ">
-  </form>
-  </body>
 
-  </html>
+<head>
+  <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+  <title>がぞうであそぼ！</title>
+</head>
+
+<body>
+<div id="btn">
+  <form action="/ans" method="post">
+    <input type="submit" value="類似度診断であそぶ" class="btns">
+  </form>
+
+  <form action="/ans2" method="post">
+    <input type="submit" value="この麺のどの麺であそぶ" class="btns">
+  </form>
+  </div>
+</body>
+
+</html>
