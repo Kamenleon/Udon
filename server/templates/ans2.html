@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
-  <title>俳優類似度診断</title>
+  <title>これは何麺だ？？</title>
 </head>
 
 <body>
   <div class="contents">
     <main>
-      <h1>俳優類似度診断</h1>
-      <p id="ansName">あなたは「{{name}}」に{{p}}％似ています</p>
+      <h1>これは何麺だ？？</h1>
+      <p id="ansName">これは{{p}}％の確率で「{{name}}」です。</p>
       <div id="actImg">
       </div>
       <div id="result">
@@ -20,14 +20,14 @@
         data-text="診断してみました！" data-hashtags="サマーハッカソン" data-related="" data-show-count="false">Tweet</a>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-      <form action="/ans" method="post">
+      <form action="/ans2" method="post">
         <input type="submit" value="もう一度あそぶ">
       </form>
 
 
     </main>
-    <form action="/ans2" method="post">
-      <input type="submit" value="ほかの診断であそぶ">
+    <form action="/ans" method="post">
+      <input type="submit" value="ほかの診断で遊んで見る">
     </form>
   </div>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
