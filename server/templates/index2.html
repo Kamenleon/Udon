@@ -9,16 +9,18 @@
 
 <body>
   <div class="contents">
-    <main>
-      <p style="text-align-last: center;">これは何麺だ？</p>
+    <h1>これは何麺だ？</h1>
+    <div id="btn" class="upload">
       <form action="/upload2" method="post" enctype="multipart/form-data">
         <input type="file" name="image" accept="image/png, image/jpeg">
-        <button type="submit">submit</button>
+        <button type="submit">送信</button>
       </form>
-    </main>
-    <form action="/ans" method="post">
-      <input type="submit" value="ほかの診断で遊んで見る">
-    </form>
+    </div>
+    <div id="topBtn">
+      <form action="/ans" method="post">
+        <input type="submit" value="ほかの診断で遊んで見る">
+      </form>
+    </div>
   </div>
 </body>
 
