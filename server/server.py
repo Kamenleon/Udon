@@ -23,14 +23,14 @@ def random_str(n):
 
 @app.route('/')
 def index():
-    #return render_template('index.html', images=os.listdir(SAVE_DIR)[::-1],out=out)
+    
     return render_template('index.html', images=os.listdir(SAVE_DIR)[::-1],out=out)
 
 @app.route('/images/<path:path>')
 def send_js(path):
     return send_from_directory(SAVE_DIR, path)
 
-# 参考: https://qiita.com/yuuuu3/items/6e4206fdc8c83747544b
+
 @app.route('/upload', methods=['POST'])
 def upload():
     if request.files['image']:
@@ -42,8 +42,8 @@ def upload():
 
 
         # 保存
-        #dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
-        dt_now = datetime.now().strftime("test") + random_str(5)
+        #dt_now = datetime.now().strftime("test") + random_str(5)
+        dt_now='image'
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
         print("save", save_path)
@@ -66,8 +66,8 @@ def upload2():
 
 
         # 保存
-        #dt_now = datetime.now().strftime("%Y_%m_%d%_H_%M_%S_") + random_str(5)
-        dt_now = datetime.now().strftime("test") + random_str(5)
+        #dt_now = datetime.now().strftime("test") + random_str(5)
+        dt_now='image2'
         save_path = os.path.join(SAVE_DIR, dt_now + ".png")
         cv2.imwrite(save_path, img)
         print("save", save_path)
