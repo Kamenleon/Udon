@@ -24,7 +24,8 @@ def random_str(n):
 @app.route('/')
 def index():
     
-    return render_template('index.html', images=os.listdir(SAVE_DIR)[::-1],out=out)
+    #return render_template('index.html', images=os.listdir(SAVE_DIR)[::-1],out=out)
+    return render_template('home.html')
 
 @app.route('/images/<path:path>')
 def send_js(path):
@@ -53,6 +54,9 @@ def upload():
 
         #return redirect('/')
         return render_template('ans.html',name=name,p=pasent)
+    else:
+        return render_template('index.html')
+
 
 
 @app.route('/upload2', methods=['POST'])
@@ -77,6 +81,8 @@ def upload2():
 
         #return redirect('/')
         return render_template('ans2.html',name=name,p=pasent)
+    else:
+        return render_template('index2.html')
 
 @app.route('/ans', methods=['POST'])
 def post():
@@ -86,6 +92,10 @@ def post():
 def post2():
     return render_template('index2.html')
 
+@app.route('/re', methods=['POST'])
+def post3():
+    #return render_template('home.html')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.debug = True
