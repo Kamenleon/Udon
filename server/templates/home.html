@@ -3,12 +3,17 @@
 
 <head>
   <meta charset="utf-8">
+    <style>
+      body {
+        background: #ffc53c;
+      }
+    </style>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
   <title>がぞうであそぼ！</title>
 </head>
 
 <body>
-  <img src="../static/answer/Asobo.png" ,alt="がぞうであそぼ！" width="300">
+  <img src="http://localhost:8000/answer/Asobo.png" ,alt="がぞうであそぼ！" width="300" id="topImg">
 
 <div id="btn">
   <form action="/ans" method="post">

@@ -51,3 +51,7 @@ h1{
 #name{
   font-weight: bold;
 }
+
+#topImg{
+  margin: 20px 200px 50px 200px;
+}
