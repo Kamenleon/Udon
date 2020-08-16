@@ -54,6 +54,9 @@ def upload():
 
         #return redirect('/')
         return render_template('ans.html',name=name,p=pasent)
+    else:
+        return render_template('index.html')
+
 
 
 @app.route('/upload2', methods=['POST'])
@@ -78,6 +81,8 @@ def upload2():
 
         #return redirect('/')
         return render_template('ans2.html',name=name,p=pasent)
+    else:
+        return render_template('index2.html')
 
 @app.route('/ans', methods=['POST'])
 def post():
