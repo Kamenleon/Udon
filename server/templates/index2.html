@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css') }}">
+  <title>これは何麺だ？</title>
+</head>
+
+<body>
+  <div class="contents">
+    <main>
+      <p style="text-align-last: center;">これは何麺だ？</p>
+      <form action="/upload2" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/png, image/jpeg">
+        <button type="submit">submit</button>
+      </form>
+    </main>
+    <form action="/ans" method="post">
+      <input type="submit" value="ほかの診断で遊んで見る">
+    </form>
+  </div>
+</body>
+
+</html>
